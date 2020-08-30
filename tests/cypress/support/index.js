@@ -16,11 +16,3 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import 'cypress-commands'
-//Mocha beforeEach/AfterEach Section
-// afterEach(() => {
-//   cy.menu('Admin')
-//   cy.wait(1500)
-//   // Deleted all images and testimonys
-//   cy.get('.button-border').click({ multiple: true, timeout: 6000 })
-//   cy.logout()
-// })

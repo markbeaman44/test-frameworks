@@ -1,16 +1,32 @@
 import { Then } from 'cypress-cucumber-preprocessor/steps'
 
-Then('the user validates the information is displayed: {string}, {string}, {string}, {string}',
-    (name, location, description, image) => {
-      cy.wait(1000)
-      cy.get('.testinmony div:nth-of-type(1) .borderlayout #name').then((results) => {
-        expect(results).to.have.text('Name: ' + name)
-      })
-      cy.get('.testinmony div:nth-of-type(1) .borderlayout #location').then((results) => {
-        expect(results).to.have.text('Location: ' + location)
-      })
-      cy.get('.testinmony div:nth-of-type(1) .borderlayout #description').then((results) => {
-        expect(results).to.have.text('Description: ' + description)
-      })
-      cy.get('.testinmony div:nth-of-type(1) div .profileimage').find("img").should('be.visible')
+Then('the user is directed to the successful main page', () => {
+  cy.wait(1000)
+  cy.get('.logout').then((results) => {
+    expect(results).to.contain('Sign out')
+  })
+}),
+Then('validates the contact information is correct {string}', (fixtureValue) => {
+  cy.get('a[title="Addresses"] > span').click()
+
+  cy.readFile('tests/cypress/fixtures/' + fixtureValue).then((value) => { 
+    cy.get('#center_column li:nth-child(2) > span:nth-child(1)').then((results) => {
+      expect(results).to.contain(value.first_name)
+    })
+    cy.get('#center_column li:nth-child(2) > span:nth-child(2)').then((results) => {
+      expect(results).to.contain(value.last_name)
+    })
+  })
+}),
+Then('the user will be provided with missing information error message', () => {
+  cy.wait(1000)
+  cy.get('.alert-danger > p').then((results) => {
+    expect(results).to.contain('errors')
+  })
+}),
+Then('the user will be provided with error message containing {string}', (errorMessage) => {
+  cy.wait(1000)
+  cy.get('#create_account_error > ol > li').then((results) => {
+    expect(results).to.contain(errorMessage)
+  })
 })

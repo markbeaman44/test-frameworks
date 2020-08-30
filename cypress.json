@@ -2,7 +2,8 @@
   "pluginsFile": "tests/cypress/plugins/index.js",
   "testFiles": "**/*.feature",
   "ignoreTestFiles": "*.js",
-  "baseUrl": "http://localhost:8080",
+  "baseUrl": "http://automationpractice.com/index.php",
   "viewportWidth": 1280,
-  "viewportHeight": 880
+  "viewportHeight": 880,
+  "experimentalSourceRewriting": true
 }

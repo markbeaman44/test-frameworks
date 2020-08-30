@@ -1,18 +1,16 @@
 import { When } from 'cypress-cucumber-preprocessor/steps'
 
-import * as testimony from '../../pages/testimonyPage'
+import * as signIn from '../../pages/signInPage'
 
-When('the user clicks on testimony page', () => {
-  cy.menu('Testimony')
+When('the user fills in the registration form {string}', (fixtureValue) => {
+  cy.wait(2000)
+  signIn.fillPersonalInfo(fixtureValue)
 })
 
-When('the user clicks on testimony page via mobile menu', () => {
-  cy.mobileMenu('Testimony')
+When('clicks on the register button', () => {
+  signIn.submitForm()
 })
 
-When('completes the testimony form: {string}, {string}, {string}, {string} with token',
-    (name, location, description, image) => {
-      testimony.clickToExpandTestimonyForm()
-      testimony.fillTestimonyForm(name, location, description, image)
-      testimony.submitTestimonyForm()
+When('the user clicks on create an account', () => {
+  cy.get('#SubmitCreate').click()
 })

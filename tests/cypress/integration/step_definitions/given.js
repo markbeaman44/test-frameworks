@@ -1,24 +1,17 @@
 import { Given } from "cypress-cucumber-preprocessor/steps"
 
-Given('the user logs into admin page', () => {
+import * as signIn from '../../pages/signInPage'
+
+Given('the user navigates to the signup page', () => {
   cy.visit('/')
-  cy.menu('Admin')
-  cy.login('Mitchalvarezbeaman@gmail.com','Elie1234')
+  cy.menu('Sign in')
 })
 
-Given('gets the token', () => {
-  cy.wait(2000)
-
-  cy.get('#copiedToken').then(($info) => {
-    cy.writeFile('tests/cypress/fixtures/token.json', {
-      id: 1,
-      token: $info.val()
-    })
-  })
+Given('clicks on create an account', () => {
+  const emailAddress = Math.random().toString(36).substring(3)
+  signIn.createNewAccount(`${emailAddress}@gmail.com`)
 })
 
-Given('the user logs into admin page via mobile menu', () => {
-  cy.visit('/')
-  cy.mobileMenu('Admin')
-  cy.login('Mitchalvarezbeaman@gmail.com','Elie1234')
+Given('enters email address {string}', (emailAddress) => {
+  cy.get('#email_create').type(emailAddress)
 })

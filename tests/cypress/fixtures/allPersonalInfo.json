@@ -1,0 +1,17 @@
+{
+  "title": "Mr",
+  "first_name": "Mark",
+  "last_name": "Beaman",
+  "password": "12345",
+  "date_birth": "18/3/1989",
+  "company": "techmb LTD",
+  "address": "123 testville",
+  "address_2": "testhall",
+  "city": "Testimania",
+  "state": "Texas",
+  "zip": "00000",
+  "country": "United States",
+  "additional_info": "n/a",
+  "telephone": "01234",
+  "mobile": "56789"
+}

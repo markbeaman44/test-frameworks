@@ -1,29 +1,54 @@
-# wedding-site
+# Test-Frameworks
 
-## Project setup
+## Project setup - To install cypress / Cucumber
 ```
 npm install
+Note: to install node.js, to use npm: https://nodejs.org/en/download/ 
 ```
 
-### Compiles and hot-reloads for development
+### Run your cypress tests via GUI
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+npm run cypress:open
 ```
 
-### Run your end-to-end tests
+### Run your cypress tests via headless
 ```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
-npm run lint
+npm run cypress:run
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Issues
+```
+Major Issue:
+```
+![alt text](https://ibb.co/syvjx2g) or url: https://ibb.co/syvjx2g
+```
+Had issues with cross origin error:
+  It seems to be due to php web app with it adding #account-creation at end of url - confusing Cypress
+  full url: http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation
+  
+  cypress recommends:
+  https://docs.cypress.io/guides/references/error-messages.html#Cypress-detected-a-cross-origin-error-happened-on-page-load
+  
+  Found issue here:
+  https://stackoverflow.com/questions/61977401/cypress-changes-the-url-and-it-breaks-the-app
+  https://github.com/cypress-io/cypress/issues/7402
+
+  solution:
+  cypress version needs updating to 4.6.0
+  Add below to cypress.json
+  {
+    "experimentalSourceRewriting": true
+  }
+```
+
+```
+Trival Issue:
+```
+![alt text](https://ibb.co/6v0f95m) or url: https://ibb.co/6v0f95m
+```
+I believe this to be a trival bug, as the error messages is getting the info from elements id
+instead of the text e.g Address line 1 instead of address1
+
+Its not enough to fail a automation test, as the error occurs and prevents user,
+but worth noting to product owner or designers for rewording as customer facing application.
+```
